@@ -29,16 +29,16 @@ const io = new Server(server, {
 
 //how we listen to events. connection: how it listens to server
 io.on("connection", (socket) => {
-    console.log(`User Connected: ${socket.id}`)
-        //joining a room- specifying a value that is id of room you are joining
-    socket.on("join_room", (data)=> {
-            socket.join(data)
-            console.log(data)
-        })
-    socket.on("send_message", (data) => {
-        //broadcast- sent to everyone but urself
-        io.to(data.room).emit("receive_message", data)
-    })
+    // console.log(`User Connected: ${socket.id}`)
+    //     //joining a room- specifying a value that is id of room you are joining
+    // socket.on("join_room", (data)=> {
+    //         socket.join(data)
+    //         console.log(data)
+    //     })
+    // socket.on("send_message", (data) => {
+    //     //broadcast- sent to everyone but urself
+    //     io.to(data.room).emit("receive_message", data)
+    // })
 
     //Socket IO Rooms tutorial
 socket.on("join server", (username) => {

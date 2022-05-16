@@ -1,2 +1,2 @@
-# react-websocket
- First try at using websockets with React
+# React + Socket Chat Room
+ First try at using websockets with React and socket.io.
