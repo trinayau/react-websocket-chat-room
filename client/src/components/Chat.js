@@ -59,7 +59,7 @@ function Chat(props){
         const currentChat = {
             chatName: room,
             isChannel: true,
-            receiverId: "true",
+            receiverId: "",
         }
         return (
             <Row onClick={()=> props.toggleChat(currentChat)} key={room}>
@@ -105,7 +105,7 @@ function Chat(props){
     if (!props.currentChat.isChannel || props.connectedRooms.includes(props.currentChat.chatName)) {
         body = (
             <Messages>
-                {props.messages.map(renderMessages)}
+                {props.messages && props.messages.map(renderMessages)}
             </Messages>
         );
     } else {

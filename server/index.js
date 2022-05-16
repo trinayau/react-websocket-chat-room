@@ -54,6 +54,30 @@ socket.on("join server", (username) => {
     socket.join(roomName);
     cb(messages[roomName])
   })
+
+  socket.on("send message", ({content, to, sender, chatName, isChannel}) => {
+      if (isChannel) {
+          const payload = {
+              content,
+              chatName,
+              sender,
+          }
+          socket.to(to).emit("new message", payload);
+      } else {
+          const payload = {
+              content,
+              chatName: sender,
+              sender
+          }
+          socket.to(to).emit("new message", payload);
+      }
+      if (messages[chatName]) {
+          messages[chatName].push({
+              sender,
+              content
+          })
+      }
+  })
   
   socket.on("disconnect", ()=>{
     users = users.filter(u => u.id !== socket.id);

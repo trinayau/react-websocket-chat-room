@@ -105,7 +105,6 @@ function App() {
   }, [messages])
 
   function connect() {
-    console.log('connecting')
     setConnected(true);
     //returns a newly connected socket client and attach to socketRef
     socketRef.current = io.connect("http://localhost:3003");
